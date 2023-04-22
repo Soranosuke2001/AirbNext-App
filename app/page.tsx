@@ -1,5 +1,5 @@
 export default function Home() {
   return (
-    <p>Home Page</p>
+    <div className="text-rose-500 text-2xl">Home Page</div>
   )
 }
