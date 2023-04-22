@@ -7,6 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FieldValues, useForm, SubmitHandler } from "react-hook-form";
 import useRegisterModal from "@/app/Hooks/useRegisterModal";
 import Modal from "./Modal";
+import Heading from "../Heading";
 
 interface RegisterModalProps {}
 
@@ -39,6 +40,12 @@ const RegisterModal: FC<RegisterModalProps> = ({}) => {
     }
   };
 
+  const bodyContent = (
+    <div className='flex flex-col gap-4'>
+      <Heading title='Welcome to Airbnext!' subtitle="Create an Account" />
+    </div>
+  )
+
   return <Modal 
     disabled={isLoading}
     isOpen={registerModal.isOpen}
@@ -46,6 +53,7 @@ const RegisterModal: FC<RegisterModalProps> = ({}) => {
     actionLabel="Continue"
     onClose={registerModal.onClose}
     onSubmit={handleSubmit(onSubmit)}
+    body={bodyContent}
   />;
 };
 
