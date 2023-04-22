@@ -11,6 +11,7 @@ import Heading from "../Heading";
 import Input from "../Inputs/Input";
 import { toast } from "react-hot-toast";
 import Button from "../Button";
+import { signIn } from "next-auth/react";
 
 interface RegisterModalProps {}
 
@@ -87,7 +88,7 @@ const RegisterModal: FC<RegisterModalProps> = ({}) => {
         outline
         label="Continue with GitHub"
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn('github')}
       />
       <div className="text-center text-neutral-500 mt-4 font-light">
         <div className="flex flex-row justify-center items-center gap-2">
