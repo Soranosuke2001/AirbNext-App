@@ -1,13 +1,17 @@
-"use client"
+"use client";
 
-import React, { FC } from 'react'
+import React, { FC } from "react";
 
 interface ContainerProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
-const Container: FC<ContainerProps> = ({children}) => {
-  return <div>{children}</div>
-}
+const Container: FC<ContainerProps> = ({ children }) => {
+  return (
+    <div className="max-w-[2520px] mx-auto xl:px-20 md:px-10 sm:px-2 px-4">
+      {children}
+    </div>
+  );
+};
 
-export default Container
+export default Container;
