@@ -121,7 +121,7 @@ const LoginModal: FC<LoginModalProps> = ({}) => {
         outline
         label="Continue with GitHub"
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn("github")}
       />
       <div className="text-center text-neutral-500 mt-4 font-light">
         <div className="flex flex-row justify-center items-center gap-2">
