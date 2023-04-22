@@ -16,7 +16,7 @@ const Avatar: FC<AvatarProps> = ({
       height="30"
       width="30"
       alt="User Avatar"
-      src={src || "/images/avatar.png"}
+      src={src || "/images/placeholder.png"}
     />
   );
 };

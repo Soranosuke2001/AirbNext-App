@@ -36,7 +36,6 @@ const LoginModal: FC<LoginModalProps> = ({}) => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-    console.log(data)
 
     signIn('credentials', {
       redirect: false,
@@ -115,7 +114,7 @@ const LoginModal: FC<LoginModalProps> = ({}) => {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn('google')}
       />
       <Button
         outline
