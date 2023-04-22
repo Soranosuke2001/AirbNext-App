@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import Modal from './components/Modals/Modal';
 import RegisterModal from './components/Modals/RegisterModal';
 import ToasterProvider from './Providers/ToasterProvider';
+import LoginModal from './components/Modals/LoginModal';
 
 export const metadata = {
   title: 'Airbnext',
@@ -24,6 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <ToasterProvider />
+        <LoginModal />
         <RegisterModal />
         <Navbar />
         {children}
