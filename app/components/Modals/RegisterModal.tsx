@@ -9,6 +9,7 @@ import useRegisterModal from "@/app/Hooks/useRegisterModal";
 import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from "../Inputs/Input";
+import { toast } from "react-hot-toast";
 
 interface RegisterModalProps {}
 
@@ -32,10 +33,10 @@ const RegisterModal: FC<RegisterModalProps> = ({}) => {
     setIsLoading(true);
 
     try {
-      axios.post("/api/register", data);
+      await axios.post("/api/register", data);
       registerModal.onClose();
     } catch (error) {
-      console.log(error);
+      toast.error("Something went wrong signing you up.");
     } finally {
       setIsLoading(false);
     }
@@ -44,9 +45,31 @@ const RegisterModal: FC<RegisterModalProps> = ({}) => {
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading title="Welcome to Airbnext!" subtitle="Create an Account" />
-      <Input id='email' label='Email' disabled={isLoading} register={register} errors={errors} required />
-      <Input id='name' label='Name' disabled={isLoading} register={register} errors={errors} required />
-      <Input id='password' label='Password' type='password' disabled={isLoading} register={register} errors={errors} required />
+      <Input
+        id="email"
+        label="Email"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
+      <Input
+        id="name"
+        label="Name"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
+      <Input
+        id="password"
+        label="Password"
+        type="password"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
     </div>
   );
 

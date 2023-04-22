@@ -4,6 +4,7 @@ import './globals.css'
 import Navbar from './components/Navbar/Navbar';
 import Modal from './components/Modals/Modal';
 import RegisterModal from './components/Modals/RegisterModal';
+import ToasterProvider from './Providers/ToasterProvider';
 
 export const metadata = {
   title: 'Airbnext',
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+        <ToasterProvider />
         <RegisterModal />
         <Navbar />
         {children}
