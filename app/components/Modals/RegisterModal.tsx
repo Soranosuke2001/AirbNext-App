@@ -8,6 +8,7 @@ import { FieldValues, useForm, SubmitHandler } from "react-hook-form";
 import useRegisterModal from "@/app/Hooks/useRegisterModal";
 import Modal from "./Modal";
 import Heading from "../Heading";
+import Input from "../Inputs/Input";
 
 interface RegisterModalProps {}
 
@@ -41,20 +42,23 @@ const RegisterModal: FC<RegisterModalProps> = ({}) => {
   };
 
   const bodyContent = (
-    <div className='flex flex-col gap-4'>
-      <Heading title='Welcome to Airbnext!' subtitle="Create an Account" />
+    <div className="flex flex-col gap-4">
+      <Heading title="Welcome to Airbnext!" subtitle="Create an Account" />
+      <Input id='email' label='Email' disabled={isLoading} register={register} errors={errors} required />
     </div>
-  )
+  );
 
-  return <Modal 
-    disabled={isLoading}
-    isOpen={registerModal.isOpen}
-    title="Register"
-    actionLabel="Continue"
-    onClose={registerModal.onClose}
-    onSubmit={handleSubmit(onSubmit)}
-    body={bodyContent}
-  />;
+  return (
+    <Modal
+      disabled={isLoading}
+      isOpen={registerModal.isOpen}
+      title="Register"
+      actionLabel="Continue"
+      onClose={registerModal.onClose}
+      onSubmit={handleSubmit(onSubmit)}
+      body={bodyContent}
+    />
+  );
 };
 
 export default RegisterModal;
