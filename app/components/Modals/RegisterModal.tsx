@@ -45,6 +45,8 @@ const RegisterModal: FC<RegisterModalProps> = ({}) => {
     <div className="flex flex-col gap-4">
       <Heading title="Welcome to Airbnext!" subtitle="Create an Account" />
       <Input id='email' label='Email' disabled={isLoading} register={register} errors={errors} required />
+      <Input id='name' label='Name' disabled={isLoading} register={register} errors={errors} required />
+      <Input id='password' label='Password' type='password' disabled={isLoading} register={register} errors={errors} required />
     </div>
   );
 
