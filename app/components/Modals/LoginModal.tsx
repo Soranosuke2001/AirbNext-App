@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useCallback, useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { FieldValues, useForm, SubmitHandler } from "react-hook-form";
@@ -83,6 +83,11 @@ const LoginModal: FC<LoginModalProps> = ({}) => {
     // }
   };
 
+  const toggleModal = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal])
+
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading title="Welcome Back!" subtitle="Login To Your Account!" />
@@ -126,7 +131,7 @@ const LoginModal: FC<LoginModalProps> = ({}) => {
           <div>Don't Have an Account?</div>
           <div
             className="text-neutral-800 cursor-pointer hover:underline"
-            onClick={loginModal.onClose}
+            onClick={toggleModal}
           >
             Create Account
           </div>

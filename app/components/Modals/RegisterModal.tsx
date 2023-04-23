@@ -12,10 +12,12 @@ import Input from "../Inputs/Input";
 import { toast } from "react-hot-toast";
 import Button from "../Button";
 import { signIn } from "next-auth/react";
+import useLoginModal from "@/app/Hooks/useLoginModal";
 
 interface RegisterModalProps {}
 
 const RegisterModal: FC<RegisterModalProps> = ({}) => {
+  const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -43,6 +45,11 @@ const RegisterModal: FC<RegisterModalProps> = ({}) => {
       setIsLoading(false);
     }
   };
+
+  const toggleModal = useCallback(() => {
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -82,20 +89,20 @@ const RegisterModal: FC<RegisterModalProps> = ({}) => {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => signIn('google')}
+        onClick={() => signIn("google")}
       />
       <Button
         outline
         label="Continue with GitHub"
         icon={AiFillGithub}
-        onClick={() => signIn('github')}
+        onClick={() => signIn("github")}
       />
       <div className="text-center text-neutral-500 mt-4 font-light">
         <div className="flex flex-row justify-center items-center gap-2">
           <div>Already Have an Account?</div>
           <div
             className="text-neutral-800 cursor-pointer hover:underline"
-            onClick={registerModal.onClose}
+            onClick={toggleModal}
           >
             Log In
           </div>
