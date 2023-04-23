@@ -1,7 +1,6 @@
 "use client";
 
-import { FC, useState, useCallback } from "react";
-import axios from "axios";
+import { FC, useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { FieldValues, useForm, SubmitHandler } from "react-hook-form";
