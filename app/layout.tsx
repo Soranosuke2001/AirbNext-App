@@ -2,11 +2,12 @@ import { Nunito } from 'next/font/google';
 
 import './globals.css'
 import Navbar from './components/Navbar/Navbar';
-import Modal from './components/Modals/Modal';
-import RegisterModal from './components/Modals/RegisterModal';
 import ToasterProvider from './Providers/ToasterProvider';
-import LoginModal from './components/Modals/LoginModal';
 import { getCurrentUser } from './actions/getCurrentUser';
+
+import RegisterModal from './components/Modals/RegisterModal';
+import LoginModal from './components/Modals/LoginModal';
+import RentModal from './components/Modals/RentModal';
 
 export const metadata = {
   title: 'Airbnext',
@@ -29,6 +30,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <ToasterProvider />
+        <RentModal />
         <LoginModal />
         <RegisterModal />
         <Navbar currentUser={currentUser}/>
