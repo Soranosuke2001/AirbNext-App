@@ -8,6 +8,7 @@ import { categories } from "@/app/libs/categoryList";
 import CategoryInput from "../Inputs/CategoryInput";
 import { FieldValues, useForm } from "react-hook-form";
 import LocationSelect from "../Inputs/LocationSelect";
+import Map from "../Map";
 
 interface RentModalProps {}
 
@@ -47,6 +48,7 @@ const RentModal: FC<RentModalProps> = ({}) => {
   });
 
   const category = watch("category");
+  const location = watch("location");
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -108,7 +110,11 @@ const RentModal: FC<RentModalProps> = ({}) => {
           title="Where is your place located?"
           subtitle="Pick a location"
         />
-        <LocationSelect />
+        <LocationSelect
+        value={location}
+        onChange={(value) => setCustomValue("location", value)}
+         />
+         <Map />
       </div>
     );
   }
