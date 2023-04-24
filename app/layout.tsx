@@ -1,6 +1,7 @@
 import { Nunito } from "next/font/google";
 
 import "./globals.css";
+import { Suspense } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import ToasterProvider from "./Providers/ToasterProvider";
 import { getCurrentUser } from "./actions/getCurrentUser";
@@ -30,7 +31,9 @@ export default async function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <ToasterProvider />
-        <SearchModal />
+        <Suspense fallback={<>Loading...</>}>
+          <SearchModal />
+        </Suspense>
         <RentModal />
         <LoginModal />
         <RegisterModal />
