@@ -54,6 +54,7 @@ const RentModal: FC<RentModalProps> = ({}) => {
   const guestCount = watch("guestCount");
   const roomCount = watch("roomCount");
   const bathroomCount = watch("bathroomCount");
+  const imageSrc = watch("imageSrc");
 
   const Map = useMemo(
     () => dynamic(() => import("../Map"), { ssr: false }),
@@ -149,7 +150,7 @@ const RentModal: FC<RentModalProps> = ({}) => {
     bodyContent = (
       <div className='flex flex-col gap-8'>
         <Heading title='Photos of Your Place' subtitle='Upload images of your place' />
-        <ImageUpload />
+        <ImageUpload value={imageSrc} onChange={(value) => setCustomValue('imageSrc', value)}/>
       </div>
     )
   }
