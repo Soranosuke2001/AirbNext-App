@@ -73,7 +73,7 @@ const ListingClient: FC<ListingClientProps> = ({
 
       toast.success("Reservation created successfully");
       setDateRange(initialDateRage);
-      router.refresh();
+      router.push("/trips");
     } catch (error) {
       toast.error("There was an error creating the reservation");
     } finally {
