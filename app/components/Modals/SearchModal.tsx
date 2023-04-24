@@ -42,6 +42,7 @@ const SearchModal: FC<SearchModalProps> = ({}) => {
     () => dynamic(() => import("../Map"), { ssr: false }),
     [location]
   );
+  
   const onBack = useCallback(() => {
     setStep((prev) => prev - 1);
   }, []);
@@ -114,7 +115,7 @@ const SearchModal: FC<SearchModalProps> = ({}) => {
     }
 
     return "Back";
-  }, []);
+  }, [step]);
 
   let bodyContent = (
     <div className="flex flex-col gap-8">

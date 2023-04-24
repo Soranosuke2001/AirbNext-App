@@ -42,7 +42,7 @@ const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
         toast.error("There was an error updating your favorite");
       }
     },
-    [currentUser, isFavorite, listingId, loginModal]
+    [currentUser, isFavorite, listingId, loginModal, router]
   );
 
   return { isFavorite, toggleFavorite };

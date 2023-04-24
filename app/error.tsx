@@ -7,7 +7,7 @@ interface errorProps {
   error: Error;
 }
 
-const error: FC<errorProps> = ({ error }) => {
+const Error: FC<errorProps> = ({ error }) => {
   useEffect(() => {
     console.error(error);
   }, [error]);
@@ -19,4 +19,4 @@ const error: FC<errorProps> = ({ error }) => {
   );
 };
 
-export default error;
+export default Error;

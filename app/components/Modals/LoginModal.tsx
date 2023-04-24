@@ -128,7 +128,7 @@ const LoginModal: FC<LoginModalProps> = ({}) => {
       />
       <div className="text-center text-neutral-500 mt-4 font-light">
         <div className="flex flex-row justify-center items-center gap-2">
-          <div>Don't Have an Account?</div>
+          <div>Need an Account?</div>
           <div
             className="text-neutral-800 cursor-pointer hover:underline"
             onClick={toggleModal}

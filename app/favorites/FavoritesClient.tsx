@@ -1,5 +1,3 @@
-"use client";
-
 import { FC } from "react";
 import { SafeListing, SafeUser } from "../types";
 import Container from "../components/Container";

@@ -11,7 +11,7 @@ import RentModal from "./components/Modals/RentModal";
 import SearchModal from "./components/Modals/SearchModal";
 
 export const metadata = {
-  title: "Airbnext",
+  title: "AirbNext",
   description: "Airbnb clone built with Next.js",
 };
 
