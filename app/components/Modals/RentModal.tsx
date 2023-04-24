@@ -9,6 +9,7 @@ import CategoryInput from "../Inputs/CategoryInput";
 import { FieldValues, useForm } from "react-hook-form";
 import LocationSelect from "../Inputs/LocationSelect";
 import dynamic from "next/dynamic";
+import Counter from "../Inputs/Counter";
 
 interface RentModalProps {}
 
@@ -49,8 +50,12 @@ const RentModal: FC<RentModalProps> = ({}) => {
 
   const category = watch("category");
   const location = watch("location");
+  const guestCount = watch("guestCount");
 
-  const Map = useMemo(() => dynamic(() => import('../Map'), { ssr: false }), [location])
+  const Map = useMemo(
+    () => dynamic(() => import("../Map"), { ssr: false }),
+    [location]
+  );
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -113,10 +118,22 @@ const RentModal: FC<RentModalProps> = ({}) => {
           subtitle="Pick a location"
         />
         <LocationSelect
-        value={location}
-        onChange={(value) => setCustomValue("location", value)}
-         />
-         <Map center={location?.latlng} />
+          value={location}
+          onChange={(value) => setCustomValue("location", value)}
+        />
+        <Map center={location?.latlng} />
+      </div>
+    );
+  }
+
+  if (step === STEPS.INFO) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Info About Your Place"
+          subtitle="What amenities do you have?"
+        />
+        <Counter title="Guests" subtitle='Number of  Allowed' value={guestCount} onChange={(value) => setCustomValue('guestCount', value)}/>
       </div>
     );
   }
