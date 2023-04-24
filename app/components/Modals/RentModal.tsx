@@ -12,6 +12,9 @@ import dynamic from "next/dynamic";
 import Counter from "../Inputs/Counter";
 import ImageUpload from "../Inputs/ImageUpload";
 import Input from "../Inputs/Input";
+import axios from "axios";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 interface RentModalProps {}
 
@@ -26,6 +29,7 @@ enum STEPS {
 
 const RentModal: FC<RentModalProps> = ({}) => {
   const rentModal = useRentModal();
+  const router = useRouter();
 
   const [step, setStep] = useState(STEPS.CATEGORY);
   const [isLoading, setIsLoading] = useState(false);
@@ -79,6 +83,27 @@ const RentModal: FC<RentModalProps> = ({}) => {
     setStep((value) => value + 1);
   };
 
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    if (step !== STEPS.PRICE) {
+      return onNext();
+    }
+
+    setIsLoading(true);
+
+    try {
+      await axios.post('/api/listings', data)
+      toast.success('Listing created successfully!');
+      router.refresh();
+      reset();
+      setStep(STEPS.CATEGORY);
+      rentModal.onClose();
+    } catch (error) {
+      toast.error('There was an error creating your listing');
+    } finally {
+      setIsLoading(false);
+    }
+
+  }
   
   const actionLabel = useMemo(() => {
     if (step === STEPS.PRICE) {
@@ -233,7 +258,7 @@ const RentModal: FC<RentModalProps> = ({}) => {
       title="AirbNext Your Home"
       isOpen={rentModal.isOpen}
       onClose={rentModal.onClose}
-      onSubmit={onNext}
+      onSubmit={handleSubmit(onSubmit)}
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
