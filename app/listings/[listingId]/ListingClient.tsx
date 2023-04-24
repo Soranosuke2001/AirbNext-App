@@ -4,6 +4,7 @@ import useLoginModal from "@/app/Hooks/useLoginModal";
 import Container from "@/app/components/Container";
 import ListingHead from "@/app/components/Listings/ListingHead";
 import ListingInfo from "@/app/components/Listings/ListingInfo";
+import ListingReservation from "@/app/components/Listings/ListingReservation";
 import { categories } from "@/app/libs/categoryList";
 import { SafeListing, SafeUser } from "@/app/types";
 import { Reservation } from "@prisma/client";
@@ -81,7 +82,10 @@ const ListingClient: FC<ListingClientProps> = ({
 
   useEffect(() => {
     if (dateRange.startDate && dateRange.endDate) {
-      const dayCount = differenceInCalendarDays(dateRange.endDate, dateRange.startDate);
+      const dayCount = differenceInCalendarDays(
+        dateRange.endDate,
+        dateRange.startDate
+      );
 
       if (dayCount && listing.price) {
         setTotalPrice(dayCount * listing.price);
@@ -116,6 +120,17 @@ const ListingClient: FC<ListingClientProps> = ({
               bathroomCount={listing.bathroomCount}
               locationValue={listing.locationValue}
             />
+            <div className="order-first mb-10 md:order-last md:col-span-3">
+              <ListingReservation
+                price={listing.price}
+                totalPrice={totalPrice}
+                dateRange={dateRange}
+                onChangeDate={(value) => setDateRange(value)}
+                onSubmit={onCreateReservation}
+                disabledDates={disabledDates}
+                disabled={isLoading}
+              />
+            </div>
           </div>
         </div>
       </div>
