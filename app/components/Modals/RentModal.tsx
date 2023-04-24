@@ -51,6 +51,8 @@ const RentModal: FC<RentModalProps> = ({}) => {
   const category = watch("category");
   const location = watch("location");
   const guestCount = watch("guestCount");
+  const roomCount = watch("roomCount");
+  const bathroomCount = watch("bathroomCount");
 
   const Map = useMemo(
     () => dynamic(() => import("../Map"), { ssr: false }),
@@ -133,7 +135,11 @@ const RentModal: FC<RentModalProps> = ({}) => {
           title="Info About Your Place"
           subtitle="What amenities do you have?"
         />
-        <Counter title="Guests" subtitle='Number of  Allowed' value={guestCount} onChange={(value) => setCustomValue('guestCount', value)}/>
+        <Counter title="Guests" subtitle='Number of Allowed' value={guestCount} onChange={(value) => setCustomValue('guestCount', value)}/>
+        <hr />
+        <Counter title="Rooms" subtitle='Number of Rooms Available' value={roomCount} onChange={(value) => setCustomValue('roomCount', value)}/>
+        <hr />
+        <Counter title="Bathrooms" subtitle='Number of Bathrooms Available' value={bathroomCount} onChange={(value) => setCustomValue('bathroomCount', value)}/>
       </div>
     );
   }
