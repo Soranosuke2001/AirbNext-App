@@ -7,6 +7,7 @@ import Heading from "../Heading";
 import { categories } from "@/app/libs/categoryList";
 import CategoryInput from "../Inputs/CategoryInput";
 import { FieldValues, useForm } from "react-hook-form";
+import LocationSelect from "../Inputs/LocationSelect";
 
 interface RentModalProps {}
 
@@ -89,7 +90,7 @@ const RentModal: FC<RentModalProps> = ({}) => {
         {categories.map((item) => (
           <div key={item.label} className="col-span-1">
             <CategoryInput
-              onClick={(category) => setCustomValue('category', category)}
+              onClick={(category) => setCustomValue("category", category)}
               selected={category === item.label}
               label={item.label}
               icon={item.icon}
@@ -100,12 +101,24 @@ const RentModal: FC<RentModalProps> = ({}) => {
     </div>
   );
 
+  if (step === STEPS.LOCATION) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Where is your place located?"
+          subtitle="Pick a location"
+        />
+        <LocationSelect />
+      </div>
+    );
+  }
+
   return (
     <Modal
       title="AirbNext Your Home"
       isOpen={rentModal.isOpen}
       onClose={rentModal.onClose}
-      onSubmit={rentModal.onClose}
+      onSubmit={onNext}
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
