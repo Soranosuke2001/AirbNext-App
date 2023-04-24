@@ -39,6 +39,9 @@ const RegisterModal: FC<RegisterModalProps> = ({}) => {
     try {
       await axios.post("/api/register", data);
       registerModal.onClose();
+      loginModal.onOpen();
+      toast.success("Account Created Successfully");
+      toast.success("Please Login to Continue")
     } catch (error) {
       toast.error("Something went wrong signing you up.");
     } finally {
