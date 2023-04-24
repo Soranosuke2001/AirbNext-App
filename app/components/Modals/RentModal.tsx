@@ -10,6 +10,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import LocationSelect from "../Inputs/LocationSelect";
 import dynamic from "next/dynamic";
 import Counter from "../Inputs/Counter";
+import ImageUpload from "../Inputs/ImageUpload";
 
 interface RentModalProps {}
 
@@ -142,6 +143,15 @@ const RentModal: FC<RentModalProps> = ({}) => {
         <Counter title="Bathrooms" subtitle='Number of Bathrooms Available' value={bathroomCount} onChange={(value) => setCustomValue('bathroomCount', value)}/>
       </div>
     );
+  }
+
+  if (step === STEPS.IMAGES) {
+    bodyContent = (
+      <div className='flex flex-col gap-8'>
+        <Heading title='Photos of Your Place' subtitle='Upload images of your place' />
+        <ImageUpload />
+      </div>
+    )
   }
 
   return (

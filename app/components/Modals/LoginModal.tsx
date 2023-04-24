@@ -45,7 +45,7 @@ const LoginModal: FC<LoginModalProps> = ({}) => {
 
         if (callback?.ok) {
           toast.success("Welcome Back!");
-          // router.refresh();
+          router.refresh();
           loginModal.onClose();
 
           return router.push("/");
